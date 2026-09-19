@@ -71,7 +71,7 @@ Use SDL scancode names: `"Left"`, `"Right"`, `"Up"`, `"Down"`, `"Space"`, `"Esca
 
 ## Legible Language Constraints
 
-- Max 40 lines per function body — split logic into small focused functions
+- Functions are limited by a comprehension budget (Halstead volume ≤ 1000, cyclomatic ≤ 10, cognitive ≤ 15, ≤ 9 live bindings), not a line count — split logic into small focused functions
 - Every function needs an `intent:` line
 - Records are immutable — use `record with { field: value }` for updates
 - Mutable variables use `mutable` keyword + `set` for reassignment

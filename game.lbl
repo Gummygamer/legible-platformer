@@ -33,23 +33,32 @@ function make_player(): Player
   Player { x: 100.0, y: 300.0, vx: 0.0, vy: 0.0, w: 30, h: 40, on_ground: false }
 end
 
+function ground(x: integer, w: integer): Platform
+  intent: create a wide grass-green ground platform at the bottom of the level
+  Platform { x: x, y: 550, w: w, h: 50, r: 100, g: 180, b: 50 }
+end
+
+function ledge(x: integer, y: integer, w: integer): Platform
+  intent: create a thin floating ledge platform at the given height
+  Platform { x: x, y: y, w: w, h: 20, r: 120, g: 180, b: 60 }
+end
+
 function make_platforms(): a list of Platform
   intent: create the level layout as a list of platforms
-  let green: integer = 180
   [
-    Platform { x: 0, y: 550, w: 300, h: 50, r: 100, g: green, b: 50 },
-    Platform { x: 250, y: 480, w: 120, h: 20, r: 120, g: green, b: 60 },
-    Platform { x: 420, y: 420, w: 150, h: 20, r: 120, g: green, b: 60 },
-    Platform { x: 620, y: 360, w: 120, h: 20, r: 120, g: green, b: 60 },
-    Platform { x: 500, y: 550, w: 400, h: 50, r: 100, g: green, b: 50 },
-    Platform { x: 800, y: 300, w: 150, h: 20, r: 120, g: green, b: 60 },
-    Platform { x: 1000, y: 250, w: 120, h: 20, r: 120, g: green, b: 60 },
-    Platform { x: 1150, y: 550, w: 300, h: 50, r: 100, g: green, b: 50 },
-    Platform { x: 1200, y: 350, w: 150, h: 20, r: 120, g: green, b: 60 },
-    Platform { x: 1400, y: 280, w: 120, h: 20, r: 120, g: green, b: 60 },
-    Platform { x: 1550, y: 550, w: 400, h: 50, r: 100, g: green, b: 50 },
-    Platform { x: 1600, y: 400, w: 200, h: 20, r: 120, g: green, b: 60 },
-    Platform { x: 1850, y: 320, w: 150, h: 20, r: 120, g: green, b: 60 }
+    ground(0, 300),
+    ledge(250, 480, 120),
+    ledge(420, 420, 150),
+    ledge(620, 360, 120),
+    ground(500, 400),
+    ledge(800, 300, 150),
+    ledge(1000, 250, 120),
+    ground(1150, 300),
+    ledge(1200, 350, 150),
+    ledge(1400, 280, 120),
+    ground(1550, 400),
+    ledge(1600, 400, 200),
+    ledge(1850, 320, 150)
   ]
 end
 
